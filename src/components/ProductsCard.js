@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItem,
@@ -16,6 +16,11 @@ const ProductsCard = (props) => {
 
   const [quantity, setQuantity] = useState(initialQuantity);
 
+  useEffect(() => {
+    const item = cartItems.find((item) => item.id === id);
+    setQuantity(item ? item.quantity : 0);
+  }, [cartItems, id]);
+
   const handleAddToCart = () => {
     const item = { ...props, quantity: 1 };
     dispatch(addItem(item));
@@ -24,16 +29,13 @@ const ProductsCard = (props) => {
 
   const handleIncrement = () => {
     dispatch(incrementItem(id));
-    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       dispatch(decrementItem(id));
-      setQuantity((prevQuantity) => prevQuantity - 1);
     } else {
       dispatch(decrementItem(id));
-      setQuantity(0);
     }
   };
 

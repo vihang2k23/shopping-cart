@@ -39,8 +39,12 @@ html {
 body {
     font-family: $main-font;
     background-color: $body-color;
+    margin: 0;
+    padding: 0;
 }
-
+#root{
+    height: 100vh;
+}
 input,
 button,
 textarea {
@@ -117,6 +121,7 @@ svg {
     left: 0;
     width: 100%;
     padding: 1rem 0;
+    z-index: 9;
 }
 
 .navbar {
@@ -141,7 +146,9 @@ svg {
 
 /*--====== Home / Products Section ======--*/
 #home {
-    padding: 6rem 0 4rem;
+    padding-top: 60px;
+    height: calc(100% - 77px);
+    overflow: auto;
 }
 
 .home_content {
@@ -201,6 +208,9 @@ svg {
 #footer {
     text-align: center;
     padding: 1.4rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 
     p {
         letter-spacing: 1px;
@@ -300,7 +310,7 @@ svg {
 .cart_items_quantity {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 0.8rem;
     background-color: $primary-color;
     color: #fff;
@@ -442,6 +452,7 @@ svg {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
+    width: 50px;
     cursor: pointer;
     transition: background 0.3s ease;
   }
@@ -463,6 +474,8 @@ svg {
     background: #f0f0f0;
     color: #333;
     font-size: 1.2em;
+    
+    
   }
   
   .quantity {
@@ -479,5 +492,10 @@ svg {
   .btn-add:hover {
     background: #218838;
   }
+  .quantity{
+    margin-top: 10px !important;
+  }
+ 
+
   
   

@@ -9,7 +9,6 @@ import {
 
 const Cart = () => {
   const { isCartOpen, cartItems } = useSelector((state) => state.cart);
-
   const dispatch = useDispatch();
 
   const handleCloseCart = (close) => {
@@ -60,7 +59,7 @@ const Cart = () => {
             </div>
 
             <div className="cart_body">
-              {cartQuantity === 0 ? (
+              {cartItems.length === 0 ? (
                 <h2>Cart is empty</h2>
               ) : (
                 cartItems.map((item) => {
